@@ -1,5 +1,5 @@
 import RichText from "@/components/RichText/RichText";
-import { getSinglePostBySlug } from "@/lib/strapi/api";
+import { ClientApi } from "@/lib/api/api";
 import { PostEntityResponseCollection } from "@/lib/strapi/interface/__generated__/graphql";
 import { GetServerSideProps } from "next/types";
 
@@ -11,7 +11,7 @@ function BasicPage({ data }: { data?: PostEntityResponseCollection }) {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context?.params?.slug?.[0];
   if (slug) {
-    const data = await getSinglePostBySlug(slug);
+    const data = await ClientApi.getSinglePostBySlug({ slug: slug });
     return {
       props: {
         data: data.posts,

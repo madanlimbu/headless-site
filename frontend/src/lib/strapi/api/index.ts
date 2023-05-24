@@ -1,5 +1,4 @@
 import client from "@/lib/api/apollo-client";
-import { ApolloClient } from "@apollo/client";
 import queryPosts from "../graphql/queries/PostsListingQuery";
 import { Query, QueryPostsArgs } from "../interface/__generated__/graphql";
 
@@ -35,7 +34,7 @@ export const getBlogPostsListing = async (args?: QueryPostsArgs) => {
   return data;
 };
 
-export const getSinglePostBySlug = async (slug: string) => {
+export const getSinglePostBySlug = async ({ slug }: { slug: string }) => {
   const { data } = await client.query<Query, QueryPostsArgs>({
     variables: {
       filters: {

@@ -1,5 +1,5 @@
 import Posts from "@/components/Posts/Posts";
-import { getBlogPostsListing } from "@/lib/strapi/api";
+import { ClientApi } from "@/lib/api/api";
 import { PostEntityResponseCollection } from "@/lib/strapi/interface/__generated__/graphql";
 
 function IndexPage({
@@ -11,7 +11,7 @@ function IndexPage({
 }
 
 export async function getServerSideProps() {
-  const data = await getBlogPostsListing();
+  const data = await ClientApi.getBlogPostsListing();
   return {
     props: {
       postsCollection: data.posts,

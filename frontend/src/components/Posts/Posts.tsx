@@ -1,4 +1,4 @@
-import { getBlogPostsListing } from "@/lib/strapi/api";
+import { ClientApi } from "@/lib/api/api";
 import {
   PostEntity,
   PostEntityResponseCollection,
@@ -30,7 +30,7 @@ export default function Posts({
 
   useEffect(() => {
     if (notInitialRender.current) {
-      getBlogPostsListing({
+      ClientApi.getBlogPostsListing({
         pagination: {
           start: offset,
         },
