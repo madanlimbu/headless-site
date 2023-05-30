@@ -52,7 +52,7 @@ export default function Posts({
 
   return (
     <div>
-      <h1 className="pb-6 md:pb-10 uppercase md:text-center">Latest post</h1>
+      <h1 className="pb-6 md:pb-10 uppercase md:text-center">Latest posts</h1>
       <ul>
         {posts &&
           posts.map((post) => (

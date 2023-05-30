@@ -1,5 +1,6 @@
+import Metadata from "@/components/Metadata/Metadata";
 import Posts from "@/components/Posts/Posts";
-import { ClientApi, ServerApi } from "@/lib/api/api";
+import { ClientApi } from "@/lib/api/api";
 import { PostEntityResponseCollection } from "@/lib/strapi/interface/__generated__/graphql";
 
 function Home({
@@ -7,11 +8,22 @@ function Home({
 }: {
   postsCollection: PostEntityResponseCollection;
 }) {
-  return <Posts postsCollection={postsCollection} />;
+  return (
+    <>
+      <Metadata
+        {...{
+          title: "Madan Limbu",
+          description:
+            "A website containing collection of a personal adventure.",
+        }}
+      />
+      <Posts postsCollection={postsCollection} />
+    </>
+  );
 }
 
 export async function getServerSideProps() {
-  const data = await ServerApi.getBlogPostsListing();
+  const data = await ClientApi.getBlogPostsListing();
   return {
     props: {
       postsCollection: data.posts,

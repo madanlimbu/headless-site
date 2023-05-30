@@ -1,11 +1,23 @@
+import Metadata from "@/components/Metadata/Metadata";
 import RichText from "@/components/RichText/RichText";
 import { ClientApi } from "@/lib/api/api";
 import { PostEntityResponseCollection } from "@/lib/strapi/interface/__generated__/graphql";
 import { GetServerSideProps } from "next/types";
 
 function BasicPage({ data }: { data?: PostEntityResponseCollection }) {
-  const body = data?.data?.[0]?.attributes?.body;
-  return <div>{body ? <RichText text={body} /> : "Page not found."}</div>;
+  const post = data?.data?.[0]?.attributes;
+  const body = post?.body;
+  return (
+    <>
+      <Metadata
+        {...{
+          title: post?.title,
+          description: post?.excerpt ? post?.excerpt : "",
+        }}
+      />
+      <div>{body ? <RichText text={body} /> : "Page not found."}</div>
+    </>
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

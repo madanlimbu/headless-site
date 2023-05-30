@@ -43,6 +43,9 @@
         "page"
       ],
       "default": "blog"
+    },
+    "published": {
+      "type": "date"
     }
   }
 }
