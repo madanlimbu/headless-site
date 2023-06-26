@@ -6,6 +6,7 @@ const Post = gql`
     excerpt
     slug
     body
+    published
     publishedAt
     createdAt
     tags {

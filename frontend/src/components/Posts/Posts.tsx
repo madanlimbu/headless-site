@@ -8,10 +8,12 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 function PostCard(summary: PostEntity) {
-  const formattedDate = getFormattedDate(summary.attributes?.publishedAt);
+  const formattedDate = summary.attributes?.published
+    ? getFormattedDate(summary.attributes?.published)
+    : null;
   return (
     <Link href={`/posts/${summary.attributes?.slug}`}>
-      <time>{formattedDate}</time>
+      {formattedDate && <time>{formattedDate}</time>}
       <h2 className="py-2 text-2xl font-medium">{summary.attributes?.title}</h2>
       <p className="text-base">{summary.attributes?.excerpt}</p>
     </Link>
@@ -49,7 +51,7 @@ export default function Posts({
       notInitialRender.current = true;
     }
   }, [offset]);
-
+  console.log("posts: ", posts);
   return (
     <div>
       <h1 className="pb-6 md:pb-10 uppercase md:text-center">Latest posts</h1>

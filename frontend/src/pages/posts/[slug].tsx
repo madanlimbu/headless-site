@@ -6,6 +6,9 @@ import { getFormattedDate } from "@/lib/utils/date";
 
 export default function Post(props: { data: PostEntity }) {
   const { attributes } = props.data;
+  const formattedDate = attributes?.published
+    ? getFormattedDate(attributes?.published)
+    : null;
   return (
     <>
       <Metadata
@@ -17,7 +20,7 @@ export default function Post(props: { data: PostEntity }) {
       <div className="prose max-w-none">
         <header className="pb-4 mb-4 border-b">
           <h1>{attributes?.title}</h1>
-          <time>{getFormattedDate(attributes?.publishedAt)}</time>
+          {formattedDate && <time>{formattedDate}</time>}
           <p className="mt-0 text-slate-700">{attributes?.excerpt}</p>
         </header>
         <section>

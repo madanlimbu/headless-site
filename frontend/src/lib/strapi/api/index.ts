@@ -27,7 +27,7 @@ export const getBlogPostsListing = async (args?: QueryPostsArgs) => {
         limit: 1,
         ...args?.pagination,
       },
-      sort: args?.sort ? args.sort : ["publishedAt:DESC"],
+      sort: args?.sort ? args.sort : ["published:DESC"],
     },
     query: queryPosts,
   });
