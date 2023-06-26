@@ -8,6 +8,8 @@ interface MetadataProps {
   description?: string;
 }
 export default function Metadata({ title, description }: MetadataProps) {
+  // Todo: might think about adding a specific image field hero image ?
+  // Todo: might think about adding json-ld https://nextjs.org/learn/seo/rendering-and-ranking/metadata, https://schema.org/docs/schemas.html
   return (
     <Head>
       <title>{title}</title>
@@ -15,6 +17,10 @@ export default function Metadata({ title, description }: MetadataProps) {
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
+      <meta
+        property="og:image"
+        content="https://www.madanlimbu.com/static/default.png"
+      />
     </Head>
   );
 }

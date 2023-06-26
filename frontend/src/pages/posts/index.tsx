@@ -12,7 +12,7 @@ function IndexPage({
     <>
       <Metadata
         {...{
-          title: "Posts",
+          title: "Posts | Madan",
           description: "List of latest blog post collections.",
         }}
       />
