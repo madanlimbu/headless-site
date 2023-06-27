@@ -46,6 +46,9 @@
     },
     "published": {
       "type": "date"
+    },
+    "marked": {
+      "type": "text"
     }
   }
 }

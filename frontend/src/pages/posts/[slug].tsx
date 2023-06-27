@@ -1,3 +1,4 @@
+import MarkedText from "@/components/MarkedText/MarkedText";
 import Metadata from "@/components/Metadata/Metadata";
 import RichText from "@/components/RichText/RichText";
 import { ClientApi } from "@/lib/api/api";
@@ -25,6 +26,7 @@ export default function Post(props: { data: PostEntity }) {
         </header>
         <section>
           {attributes?.body && <RichText text={attributes?.body} />}
+          {attributes?.marked && <MarkedText text={attributes?.marked} />}
         </section>
       </div>
     </>
