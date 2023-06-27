@@ -6,7 +6,7 @@ const Post = gql`
     excerpt
     slug
     body
-    marked
+    markdown
     published
     publishedAt
     createdAt

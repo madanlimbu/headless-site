@@ -1,9 +1,8 @@
-import MarkedText from "@/components/MarkedText/MarkedText";
-import Metadata from "@/components/Metadata/Metadata";
-import RichText from "@/components/RichText/RichText";
 import { ClientApi } from "@/lib/api/api";
 import { PostEntity } from "@/lib/strapi/interface/__generated__/graphql";
 import { getFormattedDate } from "@/lib/utils/date";
+import Metadata from "@/components/Metadata/Metadata";
+import Content from "@/components/Content/Content";
 
 export default function Post(props: { data: PostEntity }) {
   const { attributes } = props.data;
@@ -24,10 +23,9 @@ export default function Post(props: { data: PostEntity }) {
           {formattedDate && <time>{formattedDate}</time>}
           <p className="mt-0 text-slate-700">{attributes?.excerpt}</p>
         </header>
-        <section>
-          {attributes?.body && <RichText text={attributes?.body} />}
-          {attributes?.marked && <MarkedText text={attributes?.marked} />}
-        </section>
+        <Content
+          {...{ body: attributes?.body, markdown: attributes?.markdown }}
+        />
       </div>
     </>
   );

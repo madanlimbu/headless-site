@@ -47,8 +47,8 @@
     "published": {
       "type": "date"
     },
-    "marked": {
-      "type": "text"
+    "markdown": {
+      "type": "richtext"
     }
   }
 }

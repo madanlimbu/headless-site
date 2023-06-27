@@ -1,8 +1,8 @@
-import Metadata from "@/components/Metadata/Metadata";
-import RichText from "@/components/RichText/RichText";
 import { ClientApi } from "@/lib/api/api";
 import { PostEntityResponseCollection } from "@/lib/strapi/interface/__generated__/graphql";
 import { GetServerSideProps } from "next/types";
+import Metadata from "@/components/Metadata/Metadata";
+import Content from "@/components/Content/Content";
 
 function BasicPage({ data }: { data?: PostEntityResponseCollection }) {
   const post = data?.data?.[0]?.attributes;
@@ -15,7 +15,14 @@ function BasicPage({ data }: { data?: PostEntityResponseCollection }) {
           description: post?.excerpt ? post?.excerpt : "",
         }}
       />
-      <div>{body ? <RichText text={body} /> : "Page not found."}</div>
+
+      <div>
+        {post?.body || post?.markdown ? (
+          <Content {...{ body: post?.body, markdown: post?.markdown }} />
+        ) : (
+          "Page not found."
+        )}
+      </div>
     </>
   );
 }
