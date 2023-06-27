@@ -13,7 +13,7 @@ export default function Post(props: { data: PostEntity }) {
     <>
       <Metadata
         {...{
-          title: `${attributes?.title} | Madan`,
+          title: attributes?.title,
           description: attributes?.excerpt ? attributes?.excerpt : "",
         }}
       />

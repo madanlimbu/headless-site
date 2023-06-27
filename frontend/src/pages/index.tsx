@@ -12,7 +12,7 @@ function Home({
     <>
       <Metadata
         {...{
-          title: "Madan Limbu | Madan",
+          title: "Madan Limbu",
           description:
             "A website containing collection of a personal adventure.",
         }}

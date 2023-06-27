@@ -11,7 +11,7 @@ function BasicPage({ data }: { data?: PostEntityResponseCollection }) {
     <>
       <Metadata
         {...{
-          title: `${post?.title} | Madan`,
+          title: post?.title,
           description: post?.excerpt ? post?.excerpt : "",
         }}
       />

@@ -2,14 +2,14 @@ import { ClientApi } from "@/lib/api/api";
 import { GetServerSideProps } from "next";
 
 async function generateSiteMap() {
-  const site_url = "https://www.madanlimbu.com";
-
+  // const public_domain = process.env.PUBLIC_DOMAIN;
+  const public_domain = "www.madanlimbu.com";
+  const site_url = `https://${public_domain}`;
   const data = await ClientApi.getBlogPostsListing({
     pagination: {
       limit: -1,
     },
   });
-
   const latest_post = data.posts?.data[0].attributes?.published;
 
   return `<?xml version="1.0" encoding="UTF-8"?>
