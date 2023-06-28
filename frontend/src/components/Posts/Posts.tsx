@@ -72,7 +72,7 @@ export default function Posts({
             className="block mx-auto p-2 uppercase mt-auto"
             onClick={(e) => {
               e.preventDefault();
-              setOffset((oldState) => oldState + 1);
+              setOffset((oldState) => oldState + 10);
             }}
           >
             Load more
