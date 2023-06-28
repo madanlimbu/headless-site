@@ -51,7 +51,7 @@ export default function Posts({
       notInitialRender.current = true;
     }
   }, [offset]);
-  console.log("posts: ", posts);
+
   return (
     <div>
       <h1 className="pb-6 md:pb-10 uppercase md:text-center">Latest posts</h1>
