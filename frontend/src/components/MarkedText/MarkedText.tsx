@@ -9,7 +9,6 @@ import rehypeMermaid from "rehype-mermaidjs";
 export default function MarkedText({ text }: { text: string }): ReactElement {
   const [hast, setHast] = useState("");
   useEffect(() => {
-    hljs.highlightAll();
     // mermaid.initialize({
     //   startOnLoad: false,
     // });
@@ -18,6 +17,11 @@ export default function MarkedText({ text }: { text: string }): ReactElement {
       setHast(a.toString());
     });
   }, [text]);
+
+  useEffect(() => {
+    hljs.highlightAll();
+  }, [hast]);
+
   // const md = new MarkdownIt();
   // const parsed_text = md.render(text);
   // const parsed_text = unified()
